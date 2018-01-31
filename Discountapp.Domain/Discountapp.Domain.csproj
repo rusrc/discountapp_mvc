@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17C9731F-805E-4046-AC6A-ED916730CFF7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Discountapp.Domain</RootNamespace>
+    <AssemblyName>Discountapp.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Discountapp.MVC\App_Data\Discountapp.Domain.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugWithDbInitializer|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugWithDbInitializer\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>..\Discountapp.MVC\App_Data\Discountapp.Domain.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryMultiLanguage.cs" />
+    <Compile Include="DiscountappDbContext.cs" />
+    <Compile Include="DiscountappDbInitializer.cs" />
+    <Compile Include="DiscountappMemoryContext.cs" />
+    <Compile Include="Migrations\201704221659013_InitializeDatabase.cs" />
+    <Compile Include="Migrations\201704221659013_InitializeDatabase.Designer.cs">
+      <DependentUpon>201704221659013_InitializeDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Application\Address.cs" />
+    <Compile Include="Models\Application\Company.cs" />
+    <Compile Include="Models\Application\IActivatable.cs" />
+    <Compile Include="Models\Application\ICategory.cs" />
+    <Compile Include="Models\Application\ICompany.cs" />
+    <Compile Include="Models\Application\IImageEntity.cs" />
+    <Compile Include="Models\Application\ImageEntity.cs" />
+    <Compile Include="Models\Application\IMerchantEntity.cs" />
+    <Compile Include="Models\Application\IRealEstate.cs" />
+    <Compile Include="Models\Application\Like.cs" />
+    <Compile Include="Models\Application\MerchantCategory.cs" />
+    <Compile Include="Models\Application\MerchantEntity.cs" />
+    <Compile Include="Models\Application\MerchantType.cs" />
+    <Compile Include="Models\Application\IAddress.cs" />
+    <Compile Include="Models\Application\IMerchant.cs" />
+    <Compile Include="Models\Application\IPromotion.cs" />
+    <Compile Include="Models\Application\IPromotionItem.cs" />
+    <Compile Include="Models\Application\IWebImage.cs" />
+    <Compile Include="Models\Application\IWorkTime.cs" />
+    <Compile Include="Models\Application\MobileUser.cs" />
+    <Compile Include="Models\Application\RealEstate.cs" />
+    <Compile Include="Models\MapJsonCoord.cs" />
+    <Compile Include="Models\Application\Promotion.cs" />
+    <Compile Include="Models\Application\Category.cs" />
+    <Compile Include="Models\IIdentifiable.cs" />
+    <Compile Include="Models\Application\IValuable.cs" />
+    <Compile Include="Models\Application\PromotionItem.cs" />
+    <Compile Include="Models\Application\PromotionTime.cs" />
+    <Compile Include="Models\Application\Subscription.cs" />
+    <Compile Include="Models\Application\WorkTime.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Enumerations.cs" />
+    <Compile Include="Models\ICatigoriable.cs" />
+    <Compile Include="Models\Identity\EmailService.cs" />
+    <Compile Include="Models\Identity\AppRole.cs" />
+    <Compile Include="Models\Identity\RoleManager.cs" />
+    <Compile Include="Models\Identity\SmsService.cs" />
+    <Compile Include="Models\Identity\AppUser.cs" />
+    <Compile Include="Models\Identity\AppUserClaim.cs" />
+    <Compile Include="Models\Identity\AppUserLogin.cs" />
+    <Compile Include="Models\Identity\ApplicationUserManager.cs" />
+    <Compile Include="Models\Identity\AppUserRole.cs" />
+    <Compile Include="Models\INameable.cs" />
+    <Compile Include="Models\INameMultiLanguageJson.cs" />
+    <Compile Include="Models\IPromotional.cs" />
+    <Compile Include="Models\Location\City.cs" />
+    <Compile Include="Models\MultiLanguage.cs" />
+    <Compile Include="Models\NameMultiLanguageJson.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Discountapp.Infrastructure.CONSTANT\Discountapp.Infrastructure.Constants.csproj">
+      <Project>{f662e8c3-9ea4-4d7a-8e11-ffbc7ad2212c}</Project>
+      <Name>Discountapp.Infrastructure.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure.Exceptions\Discountapp.Infrastructure.Exceptions.csproj">
+      <Project>{811367BB-917F-48F7-98C7-F0E2C3AD7377}</Project>
+      <Name>Discountapp.Infrastructure.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure.ImageLibrary\Discountapp.Infrastructure.ImageLibrary.csproj">
+      <Project>{72B1BCA6-9EB3-4903-A296-046D8900B4EA}</Project>
+      <Name>Discountapp.Infrastructure.ImageLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure.Resources\Discountapp.Infrastructure.Resources.csproj">
+      <Project>{ee764fc4-65b2-47aa-8a14-440a62103945}</Project>
+      <Name>Discountapp.Infrastructure.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure\Discountapp.Infrastructure.csproj">
+      <Project>{b2b0be65-693a-4419-bb3c-33febb53672a}</Project>
+      <Name>Discountapp.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations\Droptables.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704221659013_InitializeDatabase.resx">
+      <DependentUpon>201704221659013_InitializeDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>2.0</SsdtUnitTestVersion>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+﻿.filter-inline__item {
+  display: block;
+  padding: 8px;
+  margin: 3px 0;
+  border-radius: 5px;
+}
+.filter-inline__item.active {
+  border: 1px solid;
+}
+.filter-inline__item:hover {
+  text-decoration: none;
+}

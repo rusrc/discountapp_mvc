@@ -1,0 +1,176 @@
+﻿@using Discountapp.MVC.Controllers
+@using Discountapp.Infrastructure
+@using Discountapp.Domain.Models.Application
+@model Discountapp.MVC.ViewModels.CompanyViewModel
+@using Langx = Discountapp.MVC.App_LocalResources.Lang;
+@section Styles{
+    <style>
+        .dz-success-mark,
+        .dz-error-mark {
+            display: none;
+        }
+
+        .dz-error-message {
+            color: red;
+        }
+
+        .dropzone {
+            width: 100%;
+            border: 2px dashed darkgrey;
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+            .dropzone:hover {
+                cursor: pointer;
+            }
+
+            .dropzone .dz-message {
+                text-align: center;
+                margin: 2em 0;
+            }
+    </style>
+
+}
+@section Scripts{
+    <script>
+        $(document).ready(() => {
+            //https://codepen.io/probil/pen/yyzdOM
+            //https://www.sitepoint.com/file-upload-form-express-dropzone-js/
+            Dropzone.options.uploadWidget = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 20, //mb
+                dictDefaultMessage: "@(Langx.DragAndDropFilePlaceholderText)",
+                dictResponseError: 'Server not Configured',
+                acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                //thumbnailHeight: 200,
+                thumbnailWidth: 200,
+                init: function () {
+                    var self = this;
+                    console.log(self);
+                    // config
+                    self.options.addRemoveLinks = true;
+                    self.options.dictRemoveFile = "Удалить";
+                    //New file added
+                    self.on("addedfile", function (file) {
+                        console.log('new file added ', file);
+                    });
+                    // Send file starts
+                    self.on("sending", function (file) {
+                        console.log('upload started', file);
+                        $('.meter').show();
+                    });
+
+                    // File upload Progress
+                    self.on("totaluploadprogress", function (progress) {
+                        console.log("progress ", progress);
+                        $('.roller').width(progress + '%');
+                    });
+
+                    self.on("queuecomplete", function (progress) {
+                        $('.meter').delay(999).slideUp(999);
+                    });
+
+                    // On removing file
+                    self.on("removedfile", function (file) {
+                        console.log(file);
+                    });
+                }
+                // accept: (data) =>
+                // {
+                //     console.log(data);
+                // },
+                // renameFilename: (data) =>
+                // {
+                //     console.log("renameFilename", data);
+                // },
+                // addedfile: (data) =>
+                // {
+                //     console.log("addedfile", data);
+                // }
+            };
+
+            $.material.init();
+            $("img.img-lazy").lazyload();
+            $(".chosen-select").chosen({ disable_search_threshold: 10, width: "100%", placeholder_text: "@(Langx.ChooseAddresses)" });
+            //$("#dropzoneField").dropzone({ url: "/file/post" });
+
+            //ar myDropzone = new Dropzone("form#dropzoneField", { url: "/file/post"});
+
+        });
+    </script>
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Add), typeof(CompanyController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Add), typeof(CompanyController))
+        </div>
+
+        <div class="col-lg-6 col-md-6 well">
+            <h1 class="h3"><a>@(Langx.AddCompanyTitle)</a></h1>
+            @using (Html.BeginForm(nameof(CompanyController.Add), nameof(CompanyController).ControllerName(),
+                new { ViewBag.ReturnUrl }, FormMethod.Post,
+                new { role = "form", id = "main_form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.TempFolderName)
+                <fieldset>
+                    <div class="form-group label-floating is-empty">
+                        @Html.LabelFor(model => model.Name, new {@class = "control-label"})
+                        @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                        <p class="help-block">Например: ТОО "Евразия"</p>
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        @Html.LabelFor(model => model.HotLineNumber, new {@class = "control-label"})
+                        @Html.EditorFor(model => model.HotLineNumber, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.HotLineNumber, "", new {@class = "text-danger"})
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        @Html.LabelFor(model => model.WebSiteLink, new {@class = "control-label"})
+                        @Html.EditorFor(model => model.WebSiteLink, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.WebSiteLink, "", new {@class = "text-danger"})
+                        <p class="help-block">Например: http://www.mysite.com</p>
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+
+        <div class="col-lg-3 col-md-3">
+            <!--<h3>Добавление нового магазина</h3>-->
+            <h3>@(Langx.LogoName)</h3>
+            @Html.ValidationMessageFor(model => model.TempFolderName, null, new { @class = "text-danger" })
+            <form action="@Url.Action(nameof(CompanyController.UploadLogo), nameof(CompanyController).ControllerName())" class="dropzone" id="upload-widget" method="post" enctype="multipart/form-data">
+                @Html.HiddenFor(model => model.TempFolderName)
+                <div class="form-group">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </div>
+            </form>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.OfferComfirmed)
+                        @Html.ValidationMessageFor(model => model.OfferComfirmed, "", new { @class = "text-danger" })
+                        Я прочитал(a) <a href="#">правила</a>
+                    </label>
+
+                </div>
+            </div>
+            <input class="btn btn-primary btn-raised" type="submit" value="Сохранить"
+                   onclick="javascript: if ($('#main_form').valid()) document.getElementById('main_form').submit();">
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,54 @@
+﻿@using System.Web.Mvc
+@using Discountapp.Infrastructure
+@using Discountapp.MVC.Controllers
+@using Langx = Discountapp.MVC.App_LocalResources.Lang;
+
+@helper Draw(string action, Type controller)
+{
+
+var wvp = PageContext.Page as WebViewPage;
+var url = wvp.Url; // UrlHelper access
+var html = wvp.Html; // HtmlHelper access
+                     //var ViewBag = wvp.ViewBag;
+
+    <ul class="nav nav-pills nav-stacked">
+        <li @(controller == typeof(CompanyController) && action == nameof(CompanyController.Add) ? "class=active" : "")>
+            <a href="@url.Action(nameof(CompanyController.Add), nameof(CompanyController).ControllerName())"><i class="fa fa-plus"></i> <i class="fa fa-tag"></i> @(Langx.AddCompany)</a>
+        </li>
+        <li @(controller == typeof(CompanyController) && action == nameof(CompanyController.Index) ? "class=active" : "")>
+            <a href="@url.Action(nameof(CompanyController.Index), nameof(CompanyController).ControllerName())"><i class="fa fa-list-ol"></i> <i class="fa fa-tag"></i> @(Langx.ListCompany)</a>
+        </li>
+        <li @(controller == typeof(MerchantController) && action == nameof(MerchantController.Add) ? "class=active" : "")>
+            <a href="@url.Action(nameof(MerchantController.Add), nameof(MerchantController).ControllerName())"><i class="fa fa-plus"></i> <i class="fa fa-shopping-cart"></i> @Langx.AddRealEstate</a>
+        </li>
+        <li @(controller == typeof(MerchantController) && action == nameof(MerchantController.Index) ? "class=active" : "")>
+            <a href="@url.Action(nameof(MerchantController.Index), nameof(MerchantController).ControllerName())"><i class="fa fa-list-ol"></i> <i class="fa fa-shopping-cart"></i> @(Langx.ListRealEstates)</a>
+        </li>
+        <li @(controller == typeof(PromotionController) && action == nameof(PromotionController.Add) ? "class=active" : "")>
+            <a href="@url.Action(nameof(PromotionController.Add), nameof(PromotionController).ControllerName())"><i class="fa fa-plus"></i> <i class="fa fa-tag"></i> @(Langx.AddPromotion)</a>
+        </li>
+        <li @(controller == typeof(PromotionController) && action == nameof(PromotionController.Index) ? "class=active" : "")>
+            <a href="@url.Action(nameof(PromotionController.Index), nameof(PromotionController).ControllerName())"><i class="fa fa-list-ol"></i> <i class="fa fa-tag"></i> @(Langx.ListPromotions)</a>
+        </li>
+        @*<li @(controller == typeof(AddressController) && action == nameof(AddressController.Index) ? "class=active" : "")>
+            <a href="@url.Action(nameof(AddressController.Index), nameof(AddressController).ControllerName())"><i class="fa fa-list-alt"></i> @(Langx.ListAddresses)</a>
+        </li>
+        <li @(controller == typeof(AddressController) && action == nameof(AddressController.Add) ? "class=active" : "")>
+            <a href="@url.Action(nameof(AddressController.Add), nameof(AddressController).ControllerName())"><i class="fa fa-map-marker"></i> @(Langx.AddAddress)</a>
+        </li>*@
+        <li role="separator" class="divider"></li>
+        <li>
+            <a href="#"><i class="fa fa-user"></i> @(Langx.MyProfile)</a>
+        </li>
+        <li @(controller == typeof(SubscriptionController) && action == nameof(SubscriptionController.Index) ? "class=active" : "")>
+            <a href="@url.Action(nameof(SubscriptionController.Index), nameof(SubscriptionController).ControllerName())"><i class="fa fa-mail-forward"></i> @(Langx.ListSubscriptions)</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-gear"></i> @(Langx.Settings)</a>
+        </li>
+    </ul>
+
+}
+
+
+

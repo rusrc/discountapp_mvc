@@ -1,0 +1,40 @@
+﻿@using Discountapp.Infrastructure
+@using Discountapp.MVC.Controllers
+@model Discountapp.MVC.ViewModels.CompanyViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Add), typeof(CompanyController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Add), typeof(CompanyController))
+        </div>
+        <div class="col-lg-9 col-md-9 well">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h3">
+                        <span class="inline-block"><a>Вы уверены, что хотите удалить компанию?</a></span>
+                        @Html.ValidationSummary(false)
+                    </h1>
+                    <small>Всё что связанно с компанией будет автоматически удалено</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        <input class="btn btn-danger" type="submit" value="Да, удалить" />
+                        <a href="@Url.Action(nameof(CompanyController.Index), nameof(CompanyController).ControllerName())" class="btn btn-derault">Отмена</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

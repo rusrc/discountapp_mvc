@@ -1,0 +1,152 @@
+﻿@using Discountapp.MVC.Controllers
+@using Discountapp.Infrastructure
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<Discountapp.MVC.ViewModels.PromotionItemViewModel>
+
+@{
+    var cityId = ViewBag.cityId as SelectList;
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(() => {
+            Dropzone.options.myAwesomeDropzone = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 20, //mb
+                dictDefaultMessage: "Нажмите или перетащите файлы"
+            };
+
+            $.material.init();
+            $("img.img-lazy").lazyload();
+            $(".chosen-select").chosen({ disable_search_threshold: 10 });
+            //$("#dropzoneField").dropzone({ url: "/file/post" });
+
+            //ar myDropzone = new Dropzone("form#dropzoneField", { url: "/file/post"});
+            var params = { sortable: true };
+            $("#demo1").treeMultiselect(params);
+        });
+    </script>
+}
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(PromotionController.Index), typeof(PromotionController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(PromotionController.Index), typeof(PromotionController))
+        </div>
+
+        <div class="col-lg-9 col-md-9 well">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h3">
+                        <span class="inline-block">
+                            <a>Ваши акции</a>
+                        </span>
+                        <span class="inline-block">
+                            <a class="btn btn-default _btn-raised" href="@Url.Action(nameof(PromotionController.Add), nameof(PromotionController).ControllerName())">
+                                <i class="fa fa-plus"></i> <i class="fa fa-shopping-cart"></i> Добавить акцию
+                            </a>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <!--<br class="hidden-sm hidden-xs"/>-->
+            <!--<button class="btn btn-primary btn-raised display-inline">Добавить</button>-->
+            <hr/>
+            @using(Html.BeginForm("Index", "Promotion", new { ViewBag.ReturnUrl }, FormMethod.Get, new {@class = "form-inline"}))
+            {
+                @*@Html.AntiForgeryToken()*@
+                @*@Html.Hidden("page", (int) ViewBag.page)*@
+
+                @*<div class="form-group form-group-no-margin">
+                    <label>Дата акции: </label>
+                    @Html.TextBox("promotionDate", (DateTime?)ViewBag.promotionDate, new { @class = "form-control", @type = "date", @placeholder = "Дата акции" })
+                </div>*@
+                <!--<div class="form-group form-group-no-margin">|</div>-->
+
+                @*<div class="form-group form-group-no-margin">
+                    <label>Город:</label>
+                    @Html.DropDownList(nameof(cityId), cityId, htmlAttributes: new {@class = "form-control"})
+                </div>
+                <div class="pull-right form-group form-group-no-margin">
+                    <button class="btn btn-default btn-raised" type="submit">Найти</button>
+                    <a class="btn btn-danger btn-raised" href="@Url.Action(nameof(PromotionController.Index), nameof(PromotionController).ControllerName())">Очистить</a>
+                </div>*@
+
+            }
+            @*<hr style="overflow: hidden;" />
+                    <ul class="filter-inline list-unstyled list-inline">
+                        <li><a class="filter-inline__item active" href="">Активные&nbsp;<i class="badge badge-default">1</i></a></li>
+                        <li><a class="filter-inline__item" href="">Неподтвержденные&nbsp;<i class="badge badge-default">2</i></a></li>
+                        <li><a class="filter-inline__item" href="">Неактивные&nbsp;<i class="badge badge-default">3</i></a></li>
+                        <li><a class="filter-inline__item" href="">Отклоненные&nbsp;<i class="badge badge-default">4</i></a></li>
+                        <li><a class="filter-inline__item" href="">Все&nbsp;<i class="badge badge-default">5</i></a></li>
+                        <li><a class="filter-inline__item" href="">Без акций&nbsp;<i class="badge badge-default">6</i></a></li>
+                    </ul>*@
+            <hr/>
+            @if (((IPagedList) Model).TotalItemCount > ((IPagedList) Model).PageSize)
+            {
+                @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page, cityId = ViewBag.selectedCityId }))
+            }
+            <div style="overflow-x: scroll;">
+                <table class="_discount-table table table-responsive _table-bordered table-striped">
+                    <!--<caption>Списко акций</caption>-->
+                    <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        @*<th>Магазин</th>*@
+                        <th>@Html.DisplayNameFor(model => model.Promotion.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.PublishDate)</th>
+                        <th>@Html.DisplayNameFor(model => model.UpdateDate)</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var promotionItem in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => promotionItem.Name)</td>
+                            @*<td>
+                                @foreach (var item in promotionItem?.Promotion?.RealEstates)
+                                {
+                                    
+                                }
+                            </td>*@
+                            <td>@Html.DisplayFor(modelItem => promotionItem.Promotion.Name)</td>
+                            <td>@(promotionItem?.Promotion?.Begin.ToShortDateString())</td>
+                            <td>@(promotionItem?.UpdateDate.ToShortDateString())</td>
+                            <td>
+                                @*<a href="@Url.Action(nameof(PromotionController.Edit), nameof(PromotionController).ControllerName(), new { promotionItem?.Promotion?.Id })">Редактирновать</a>*@
+                                <a href="@Url.Action(nameof(PromotionController.Delete), nameof(PromotionController).ControllerName(), new { promotionItem?.Promotion?.Id })">Удалить</a>
+                            </td>
+                        </tr>
+                    }
+                    @*@for (int i = 1; i < 10; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <img class="circle img-responsive" src="http://lorempixel.com/100/35/business/@(i)" alt="" _style="border-radius: 100%;">
+                                            </div>
+                                        </td>
+                                        <td><a href="#">Lorem ipsum dolor sit.</a></td>
+                                        <td>6</td>
+                                        <td>Lorem ipsum</td>
+                                        <td>Активный</td>
+                                        <td>Какое-то действие</td>
+                                    </tr>
+                                }*@
+                    </tbody>
+                </table>
+            </div>
+
+            @if (((IPagedList) Model).TotalItemCount > ((IPagedList) Model).PageSize)
+            {
+                @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page, cityId, ViewBag.promotionDate}))
+            }
+
+        </div>
+    </div>
+</section>

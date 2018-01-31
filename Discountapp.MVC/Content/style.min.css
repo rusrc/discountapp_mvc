@@ -1,0 +1,20 @@
+.discount-table td,
+.discount-table > tbody > tr > td {
+  text-align: center;
+  vertical-align: middle;
+}
+.filter-inline__item {
+  display: block;
+  padding: 10px;
+  margin: 3px 0;
+  border-radius: 5px;
+}
+.filter-inline__item.active {
+  border: 1px solid;
+}
+.filter-inline__item:hover {
+  text-decoration: none;
+}
+.promotion-item__btn {
+  font-size: 18px;
+}

@@ -1,0 +1,188 @@
+﻿@using Discountapp.Domain.Models
+@using Discountapp.MVC.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PromotionItemViewModel>
+
+@{
+    var promotionTimeSelect = ViewBag.promotionTimeSelect as SelectList;
+    var promotionFilter = (PromotionFilterType)ViewBag.promotionFilter;
+}
+
+@section scripts{
+    <script>
+        $(document).ready(() => {
+            $.material.init();
+
+            $("img.img-lazy").lazyload({
+                //effect: 'fadeIn',
+                //effectspeed: 500
+                //threshold: 200
+
+            });
+
+            $('img.img-lazy').load(function () {
+                masonryUpdate();
+            });
+
+            function masonryUpdate() {
+                var $container = $('.masonry');
+                $container.imagesLoaded(function () {
+                    $container.masonry({
+                        itemSelector: '.post-box',
+                        columnWidth: '.post-box',
+                        transitionDuration: 0
+                    });
+                });
+            }
+
+            $(".likeContainer").each((i, e) => {
+                var $likeBtn = $(e).find(".likeLink");
+                var $dislikeBtn = $(e).find(".dislikeLink");
+                var id = $likeBtn.attr("data-value");
+
+                $likeBtn.click((evt) => {
+                    evt.preventDefault();
+                    $.getJSON("/api/like", { id: id }, (data) => {
+                        $likeBtn.find("span").text(data.LikeCount);
+                        $dislikeBtn.find("span").text(data.DislikeCount);
+                    });
+                });
+
+                $dislikeBtn.click((evt) => {
+                    evt.preventDefault();
+                    $.getJSON("/api/dislike", { id: id }, (data) => {
+                        $likeBtn.find("span").text(data.LikeCount);
+                        $dislikeBtn.find("span").text(data.DislikeCount);
+                    });
+                });
+            });
+
+        });
+    </script>
+}
+
+@section styles{
+    <style>
+        .circle {
+            border-radius: 100%;
+        }
+
+        .post-box {
+            /*margin: 15px 0 15px 0;*/
+        }
+    </style>
+}
+
+<section class="container">
+    <form action="">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="h3"><a>@(ViewBag.Title)</a></h1>
+            </div>
+        </div>
+        <div class="row well">
+            <div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label for="select111" class="control-label"><i class="fa fa-calendar"></i> Выберите время акций</label>
+                    @Html.DropDownList(nameof(promotionTimeSelect), promotionTimeSelect, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="form-group">
+                    <label for="select111" class="control-label"><i class="fa fa-sort"></i> Новые или старые</label>
+                    @Html.EnumDropDownListFor(models => promotionFilter, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="form-group">
+                    <!--<br class="hidden-md hidden-sm hidden-xs" />-->
+                    <label class="control-label hidden-sm hidden-xs" for="select111" style="color:transparent;"><i class="fa fa-search"></i> Найти</label>
+                    <input class="btn btn-primary btn-raised" type="submit" value="Найти акцию">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row well">
+        <section class="masonry">
+            @foreach (var promotionItem in Model)
+            {
+                <div class="post-box col-lg-4 col-md-4 col-sm-6 promotion-item">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="list-group" _style="padding: 10px 0;margin:0;">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        @{
+                                            string imgUrl = Url.Content(promotionItem.MerchantLogo);
+                                        }
+                                        <img class="circle img-responsive" src="@imgUrl" alt="icon">
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                        <h4 class="list-group-item-heading">@Html.DisplayFor(itemModel => promotionItem.Promotion.NameMultiLangJsonObject.Value)</h4>
+                                        <p class="list-group-item-text">(@($"{promotionItem?.Promotion?.Begin.ToShortDateString()} - {promotionItem?.Promotion?.End.ToShortDateString()}"))</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            @{
+                                string imgUrl2 = promotionItem?.FolderWithImagePath;
+                                imgUrl2 = !string.IsNullOrEmpty(imgUrl2) ? Url.Content(imgUrl2) : "http://lorempixel.com/500/850/nature";
+                            }
+                            <img src="images/ring50.svg" alt="" data-original="@(imgUrl2)" class="img-lazy img-responsive img-thumbnail">
+                        </div>
+
+                        <div class="_panel-footer" style="overflow: hidden;">
+                            <div class="btn-toolbar pull-right">
+                                <div class="btn-group likeContainer">
+                                    @*<a href="javascript:void(0)" class="btn promotion-item__btn"><i class="fa fa-comment"></i>&nbsp;&nbsp;<span class="badge">0</span></a>*@
+                                    <a href="#" data-value="@(promotionItem?.Id)" class="btn promotion-item__btn dislikeLink"><i class="fa fa-thumbs-o-down"></i>&nbsp;&nbsp;<span class="badge">@(Html.DisplayFor(itemModel => promotionItem.DislikeCount))</span></a>
+                                    <a href="#" data-value="@(promotionItem?.Id)" class="btn promotion-item__btn likeLink"><i class="fa fa-thumbs-o-up"></i>&nbsp;&nbsp;<span class="badge">@(Html.DisplayFor(itemModel => promotionItem.LikeCount))</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        @{ 
+                            int days = (int)Math.Abs(Math.Round((promotionItem.Promotion.End - DateTime.Now).TotalDays));
+                        }
+                        @if (promotionItem?.Promotion?.End == DateTime.Now.AddDays(1))
+                        {
+                            <div class="alert alert-danger h3">
+                                <i class="fa fa-clock-o"></i> Завтра последний день
+                            </div>
+                        }
+                        else if (days > 0)
+                        {
+                            <div class="alert alert-success h3">
+                                <i class="fa fa-clock-o"></i> Осталось дней @(days)
+                            </div>
+                        }
+                        else if (days == 0)
+                        {
+                            <div class="alert alert-warning h3">
+                                <i class="fa fa-clock-o"></i> Сегодня последний день
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-info h3">
+                                <i class="fa fa-clock-o"></i> Акция завершилась
+                            </div>
+                        }
+                    </div>
+                </div>
+                }
+        </section>
+    </div>
+
+    <div class="row well">
+        <div class="col-lg-12">
+            @if (((IPagedList)Model).TotalItemCount > ((IPagedList)Model).PageSize)
+            {
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page, promotionTimeSelect, promotionFilter }))
+            }
+        </div>
+    </div>
+</section>

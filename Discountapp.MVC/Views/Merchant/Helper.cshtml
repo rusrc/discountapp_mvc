@@ -1,0 +1,53 @@
+﻿<section class="alert alert-dismissible">
+    <div class="row">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div action="" class="dropzone dz-clickable">
+                <input type="file" multiple="" name="file" style="display:none;">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="is-empty row">
+                <div class="col-md-12">
+                    <div class="form-group is-empty">
+                        <input class="form-control text-box single-line" id="PromotionalCampaignItems_${this.index}__Id" name="PromotionalCampaignItems[${this.index}].Id" placeholder="Название товара (необязательное)" type="text" value="">
+                    </div>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="item.Name" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="is-empty row">
+                <div class="col-md-12">
+                    <div class="form-group is-empty">
+                        <select class="form-control valid" id="categoryId" name="categoryId" placeholder="Категория товара" aria-invalid="false">
+                            <option value="1">Багаж и сумки</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="is-empty row">
+                <div class="col-md-12">
+                    <div class="form-group is-empty">
+                        <input class="form-control text-box single-line" id="PromotionalCampaignItems_${this.index}__BeginPrice" name="PromotionalCampaignItems[${this.index}].BeginPrice" placeholder="Начальная цена" type="text" value="">
+                    </div>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="item.BeginPrice" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="is-empty row">
+                <div class="col-md-12">
+                    <div class="form-group is-empty">
+                        <input class="form-control text-box single-line" id="PromotionalCampaignItems_${this.index}__PromotionalPrice" name="PromotionalCampaignItems[${this.index}].PromotionalPrice" placeholder="Акционаая цена" type="text" value="">
+                    </div>
+                </div>
+            </div>
+            <div class="is-empty row">
+                <div class="col-md-12">
+                    <div class="form-group is-empty">
+                        <input class="form-control text-box single-line" id="PromotionalCampaignItems_${this.index}__Discount" name="PromotionalCampaignItems[${this.index}].Discount" placeholder="Скидка %" type="text" value="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

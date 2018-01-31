@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Discountapp.Domain</name>
+    </assembly>
+    <members>
+        <member name="P:Discountapp.Domain.Models.Application.Address.MapJsonCoordCollection">
+            <summary>
+                Список координат для карты |
+                Coordination list
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Company.LogoName">
+            <summary>
+            Get logo file name from drive
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Company.LogoFullName">
+            <summary>
+            Get full logo path with file name form drive
+            </summary>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.Company.GetFullTempLogoFileName">
+            <summary>
+            Get first logo full pathh name or empty
+            </summary>
+            <returns></returns>
+            <exception cref="T:Discountapp.Infrastructure.Exceptions.BusinessLogicException">BusinessLogicException</exception>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Company.IsLogoExistInTempFolder">
+            <summary>
+            Check if image file is in temp folder
+            </summary>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.Company.SaveLogoInLogoFolder(Discountapp.Domain.Models.Application.IWebImage,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="webImage"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <exception cref="T:Discountapp.Infrastructure.Exceptions.BusinessLogicException"></exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Discountapp.Domain.Models.Application.Company.SaveTempLogo(Discountapp.Domain.Models.Application.IWebImage,System.String,System.Int32,System.Int32)" -->
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.ImageFolder">
+            <summary>
+            Mappable property to store foldername in database
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.TempFolder">
+            <summary>
+            Store files after client upload or other
+            </summary>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.ImageEntity.SaveImage">
+            <summary>
+            Generate ImageFolder and save there image from TempFolder 
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.FolderWithImagePathSimple">
+            <summary>
+            Simple file path like /Folder/File.name
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.FolderWithImagePath">
+            <summary>
+            ~/Upload/FolderName/ImageFileName
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.DefaultImage">
+            <summary>
+            Default image
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.DefaultImageFullPath">
+            <summary>
+            Default image full path
+            </summary>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.ImageEntity.GetFolderAndImage">
+            <summary>
+            item1 = FolderName
+            itme2 = ImageFileName
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.ImageEntity.GetFullImagePath">
+            <summary>
+            Return fulle path for one image in folder
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.ImageWidth">
+            <summary>
+            Image width in pixels
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.ImageEntity.ImageHeight">
+            <summary>
+            Image height in pixels
+            </summary>
+        </member>
+        <member name="M:Discountapp.Domain.Models.Application.ImageEntity.ImagePropotion">
+            <summary>
+            item1 = img.Width
+            item2 = img.Height
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Discountapp.Domain.Models.Application.Promotion">
+            <summary>
+            Акция
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Promotion.Begin">
+            <summary>
+            Начало акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Promotion.End">
+            <summary>
+            Конец акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Promotion.SubscriptionNotifierIsActive">
+            <summary>
+            Если активен отправлять уведомление пользователю
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Promotion.BeginShort">
+            <summary>
+            Начало акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Promotion.EndShort">
+            <summary>
+            Конец акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.Category.ParentId">
+            <summary>
+                id of parent subcatigory, if null then the hightest parent
+            </summary>
+        </member>
+        <member name="T:Discountapp.Domain.Models.Application.PromotionItem">
+            <summary>
+            Товар или другая услуга в одной акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.PromotionItem.BeginPrice">
+            <summary>
+            Begin price of <see cref="T:Discountapp.Domain.Models.Application.PromotionItem"/> promotion item | начальная цена товара
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.PromotionItem.PromotionalPrice">
+            <summary>
+            Price during active promotion | цена в период акции
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Application.PromotionItem.Discount">
+            <summary>
+            Percentage of discount | процент скидки
+            </summary>
+        </member>
+        <member name="F:Discountapp.Domain.Models.Application.PromotionTimeType.CurrentAndFuture">
+            <summary>
+            Current and future promotions
+            </summary>
+        </member>
+        <member name="F:Discountapp.Domain.Models.Application.PromotionTimeType.Yestoday">
+            <summary>
+            Promotion for yestoday
+            </summary>
+        </member>
+        <member name="F:Discountapp.Domain.Models.Application.PromotionTimeType.Today">
+            <summary>
+            Promotion for today
+            </summary>
+        </member>
+        <member name="F:Discountapp.Domain.Models.Application.PromotionTimeType.Tomorrow">
+            <summary>
+            Promotion for tomorrow
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.MapJsonCoord.ServiceName">
+            <summary>
+                Google, yandex, 2gis
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.MapJsonCoord.Longitude">
+            <summary>
+                Долгота
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.MapJsonCoord.Latitude">
+            <summary>
+                Широта
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.MapJsonCoord.Altitude">
+            <summary>
+                Высота
+            </summary>
+        </member>
+        <member name="T:Discountapp.Domain.Models.ICatigoriable">
+            <summary>
+            Entity who should has the CategoryId property
+            </summary>
+        </member>
+        <member name="P:Discountapp.Domain.Models.Location.City.MapJsonCoordCollection">
+            <summary>
+                Список координат для карты |
+                Coordination list
+            </summary>
+        </member>
+    </members>
+</doc>

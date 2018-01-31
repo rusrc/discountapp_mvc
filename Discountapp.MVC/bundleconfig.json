@@ -1,0 +1,33 @@
+[
+  {
+    "outputFileName": "Content/bundle.css",
+    "inputFiles": [
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+      "content/font-awesome.css",
+      "node_modules/jquery-chosen/chosen.min.css",
+      "Content/bootstrap-chosen.css",
+      "bower_components/jt.timepicker/lib/bootstrap-datepicker.css",
+      "bower_components/jt.timepicker/jquery.timepicker.css",
+      "Content/Site.css"
+      //"node_modules/dropzone/dist/dropzone.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/bundle.js",
+    "inputFiles": [
+      "node_modules/jquery/dist/jquery.js",
+      "bower_components/jquery-validation/dist/jquery.validate.js",
+      "node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "node_modules/bootstrap/dist/js/bootstrap.min.js",
+      "node_modules/bootstrap-material-design/dist/js/material.min.js",
+      "node_modules/jquery-chosen/chosen.jquery.js",
+      "node_modules/masonry-layout/dist/masonry.pkgd.js",
+      "node_modules/jquery-lazyload/jquery.lazyload.js",
+      "node_modules/imagesloaded/imagesloaded.js",
+      "node_modules/dropzone/dist/dropzone.js",
+      "bower_components/jt.timepicker/lib/bootstrap-datepicker.js",
+      "bower_components/jt.timepicker/jquery.timepicker.js",
+      "Scripts/app/Dropper.js"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "discountapp",
+  "description": "",
+  "main": "",
+  "authors": [
+    "shcherbakov <shcherbakov@reksoft.ru>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap-material-datetimepicker": "^2.7.1",
+    "jquery-validation": "^1.16.0",
+    "wickedpicker": "^0.4.1",
+    "jt.timepicker": "jquery-timepicker-jt#^1.11.10"
+  },
+  "resolutions": {
+    "jquery": "1.9.1 - 3"
+  }
+}

@@ -1,0 +1,201 @@
+﻿@using Discountapp.Domain.Models.Application
+@using Discountapp.MVC.Controllers
+@using Discountapp.MVC.ViewModels
+@using Discountapp.Infrastructure
+@model Discountapp.MVC.ViewModels.PromotionViewModel
+
+@{
+    var categoryId = ViewBag.categoryId as IEnumerable<Category>;
+    var addresses = ViewBag.addresses as IEnumerable<Address>;
+}
+
+@section styles{
+<style>
+    [data-dz-thumbnail] {
+        display: block;
+        width: 100%;
+    }
+
+    .dz-success-mark,
+    .dz-error-mark {
+        display: none;
+    }
+
+    .dz-error-message {
+        color: red;
+        max-height: 100px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .dropzone {
+        width: 100%;
+        border: 2px dashed darkgrey;
+        margin-bottom: 15px;
+        padding: 5px;
+    }
+    .dropzone:hover {
+        cursor: pointer;
+    }
+
+    .dz-default {
+       text-align: center;
+       margin: 1em 0;
+    }
+
+
+
+</style>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(() => {
+            $.material.init();
+            $("img.img-lazy").lazyload();
+            $(".chosen-select").chosen({ disable_search_threshold: 10, width: "100%" });
+        });
+
+        $(document).ready(() => {
+            //https://codepen.io/probil/pen/yyzdOM
+            //https://www.sitepoint.com/file-upload-form-express-dropzone-js/
+
+            //var myDropzone = new Dropzone("#my-dropzone");
+            var MainDropper = new Dropper("@(Url.Action(nameof(PromotionController.UploadImage), nameof(PromotionController).ControllerName()))");
+            $("#addItemBtn").click((e) => {
+                e.preventDefault();
+                MainDropper.GenerateNewItem();
+            });
+        });
+    </script>
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(PromotionController.Add), typeof(PromotionController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(PromotionController.Add), typeof(PromotionController))
+        </div>
+
+        @using (Html.BeginForm(nameof(PromotionController.Add), nameof(PromotionController).ControllerName(), FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(false)
+
+            <div class="col-lg-6 col-md-6 well">
+                <h1 class="h3">
+                    <a>Добавить акцию</a>
+                </h1>
+                
+                <fieldset>
+                    <div class="form-group label-floating is-empty">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label"})
+                        @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
+                        <p class="help-block">Например: "Новогодняя распродажа"</p>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Addresses, htmlAttributes: new {@class = "control-label"}) |
+                        <a href="@Url.Action(nameof(MerchantController.Add), nameof(MerchantController).ControllerName())">или добавьте сферу</a>
+                        @Html.ListBoxFor(model => model.RealEstateSelected, new MultiSelectList(addresses, nameof(Address.AddressId), nameof(Address.ShortInformation)), new {@class = "form-control chosen-select", multiple = "", data_placeholder = "Выберите магазины" })
+                        @Html.ValidationMessageFor(model => model.Addresses, "", new {@class = "text-danger"})
+                    </div>
+                </fieldset>
+
+                <fieldset id="dropzoneContainer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input id="addItemBtn" class="btn btn-default" type="submit" value="Добавить позицию/товар"/>
+                            <span>&nbsp;&nbsp;@Html.ValidationMessageFor(model => model.PromotionItems, "", new { @class = "text-danger" })</span>
+                        </div>
+                    </div>
+                    <hr/>
+                    @if (Model.PromotionItems != null && Model.PromotionItems.Any())
+                    {
+                        var index = 0;
+                        foreach (var item in Model.PromotionItems)
+                        {
+                            <div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div action="" id="my-dropzone" class="dropzone">
+                                            <input type="file" multiple name="file" style="display: none;"/>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="is-empty row">
+                                            <div class="col-md-12">
+                                                @Html.Editor($"{nameof(Model.PromotionItems)}[{index}].{nameof(PromotionItemViewModel.Id)}", new {htmlAttributes = new {@class = "form-control", placeholder = "Название товара (необязательное)"}})
+                                                @Html.ValidationMessageFor(modelItem => item.Name, "", new {@class = "text-danger"})
+                                            </div>
+                                        </div>
+                                        <div class="is-empty row">
+                                            <div class="col-md-12">
+
+                                                @Html.DropDownList($"{nameof(Model.PromotionItems)}[{index}].{nameof(PromotionItemViewModel.CategoryId)}", new SelectList(categoryId, nameof(Category.Id), nameof(Category.Name), item.CategoryId), null, htmlAttributes: new {@class = "form-control", placeholder = "Категория товара"})
+                                            </div>
+                                        </div>
+                                        <div class="is-empty row">
+                                            <div class="col-md-12">
+                                                @Html.Editor($"{nameof(Model.PromotionItems)}[{index}].{nameof(PromotionItemViewModel.BeginPrice)}", new {htmlAttributes = new {@class = "form-control", placeholder = "Начальная цена"}})
+                                                @Html.ValidationMessageFor(modelItem => item.BeginPrice, "", new {@class = "text-danger"})
+                                            </div>
+                                        </div>
+                                        <div class="is-empty row">
+                                            <div class="col-md-12">
+                                                @Html.Editor($"{nameof(Model.PromotionItems)}[{index}].{nameof(PromotionItemViewModel.PromotionalPrice)}", new {htmlAttributes = new {@class = "form-control", placeholder = "Акционаая цена"}})
+                                            </div>
+                                        </div>
+                                        <div class="is-empty row">
+                                            <div class="col-md-12">
+                                                @Html.Editor($"{nameof(Model.PromotionItems)}[{index}].{nameof(PromotionItemViewModel.Discount)}", new {htmlAttributes = new {@class = "form-control", placeholder = "Скидка %"}})
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            index++;
+                        }
+                    }
+                </fieldset>
+
+            </div>
+            <div class="col-lg-3 col-md-3 well-sm-visible well-xs-visible">
+                <div class="form-group">
+                    <b>@Html.LabelFor(model => model.Begin, htmlAttributes: new {@class = "control-label"})</b>
+                    @Html.EditorFor(model => model.Begin, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Begin, "", new {@class = "text-danger"})
+                </div>
+                <div class="form-group">
+                    <b>@Html.LabelFor(model => model.End, htmlAttributes: new {@class = "control-label"})</b>
+                    @Html.EditorFor(model => model.End, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.End, "", new {@class = "text-danger"})
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.SubscriptionNotifierIsActive)
+                            Отправлять подписчикам
+                        </label>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.Agreement)
+                            @Html.ValidationMessageFor(model => model.Agreement, "", new {@class = "text-danger"})
+                            Я прочитал(a) <a href="#">правила добавления сферы деятельности!</a>
+                        </label>
+
+                    </div>
+                </div>
+                <input class="btn btn-primary btn-raised" type="submit" value="Добавить акцию">
+            </div>
+        }
+    </div>
+</section>
+

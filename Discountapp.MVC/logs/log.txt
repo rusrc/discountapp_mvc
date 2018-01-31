@@ -1,0 +1,388 @@
+﻿FATAL 2017-04-12 16:11:45,803 23153ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:11:37, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 16:13:25,621 42823ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:13:25, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 16:15:13,969 151171ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:15:13, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext)
+FATAL 2017-04-12 16:16:24,284 11288ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:16:24, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 16:16:49,876 36880ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:16:49, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 16:17:25,665 72669ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:17:25, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 16:20:39,534 266537ms HomeController         OnException        - Ссылка на объект не указывает на экземпляр объекта.
+Fired time: 12.04.2017 16:20:39, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-12 18:42:51,948 57525ms HomeController         OnException        - An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy.
+Fired time: 12.04.2017 18:42:51, UserID:UnAuthenticated,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Data.Entity.Core.EntityException: An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy. ---> System.Data.Entity.Core.EntityException: The underlying provider failed on Open. ---> System.Data.Entity.Core.EntityException: An exception has been raised that is likely due to a transient failure. If you are connecting to a SQL Azure database consider using SqlAzureExecutionStrategy. ---> System.Data.SqlClient.SqlException: Подключение к серверу успешно установлено, но затем произошла ошибка в процессе подтверждения, предшествующего входу. (provider: TCP Provider, error: 0 - Удаленный хост принудительно разорвал существующее подключение.) ---> System.ComponentModel.Win32Exception: Удаленный хост принудительно разорвал существующее подключение
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   в System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   в System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   в System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   в System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   в System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   в System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   в System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   в System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   в System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   в System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   в System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   в System.Data.SqlClient.SqlConnection.Open()
+   в System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   в System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   в System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   в System.Data.Entity.Core.EntityClient.EntityConnection.<Open>b__2()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   в System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.EntityClient.EntityConnection.Open()
+   в System.Data.Entity.Core.Objects.ObjectContext.EnsureConnection(Boolean shouldMonitorTransactions)
+   в System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   в System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   в System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   --- Конец трассировки внутреннего стека исключений ---
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 13:43:02,889 56341ms PromotionController    OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 13:43:02, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 14:55:18,091 69047ms CompanyController      OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Company\Index.cshtml(22): error CS0117: 'Lang' does not contain a definition for 'ListCompany'
+Fired time: 21.04.2017 14:55:18, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Company\Index.cshtml(22): error CS0117: 'Lang' does not contain a definition for 'ListCompany'
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 15:00:17,064  4264ms MerchantController     OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+Fired time: 21.04.2017 15:00:17, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 15:56:57,100 3404300ms MerchantController     OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+Fired time: 21.04.2017 15:56:57, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 16:04:43,725 3870925ms PromotionController    OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 16:04:43, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 16:06:39,928 3987128ms MerchantController     OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+Fired time: 21.04.2017 16:06:39, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add.cshtml(158): error CS0117: 'Address' does not contain a definition for 'Id'
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 17:18:53,067  5643ms MerchantController     OnException        - A space or line break was encountered after the "@" character.  Only valid identifiers, keywords, comments, "(" and "{" are valid at the start of a code block and they must occur immediately following "@" with no space in between.
+
+Fired time: 21.04.2017 17:18:53, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpParseException (0x80004005): A space or line break was encountered after the "@" character.  Only valid identifiers, keywords, comments, "(" and "{" are valid at the start of a code block and they must occur immediately following "@" with no space in between.
+
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 17:19:11,734 24311ms MerchantController     OnException        - The model item passed into the dictionary is of type 'Discountapp.MVC.ViewModels.MerchantViewModel', but this dictionary requires a model item of type 'Discountapp.MVC.ViewModels.MerchantEntityViewModel'.
+Fired time: 21.04.2017 17:19:11, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.InvalidOperationException: The model item passed into the dictionary is of type 'Discountapp.MVC.ViewModels.MerchantViewModel', but this dictionary requires a model item of type 'Discountapp.MVC.ViewModels.MerchantEntityViewModel'.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 17:27:00,881  4339ms MerchantController     OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add2.cshtml(146): error CS0103: The name 'selectCityList' does not exist in the current context
+Fired time: 21.04.2017 17:27:00, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add2.cshtml(146): error CS0103: The name 'selectCityList' does not exist in the current context
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 18:20:32,473  3877ms MerchantController     OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add2.cshtml(248): error CS0411: The type arguments for method 'LabelExtensions.LabelFor<TModel, TValue>(HtmlHelper<TModel>, Expression<Func<TModel, TValue>>, string)' cannot be inferred from the usage. Try specifying the type arguments explicitly.
+Fired time: 21.04.2017 18:20:32, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Merchant\Add2.cshtml(248): error CS0411: The type arguments for method 'LabelExtensions.LabelFor<TModel, TValue>(HtmlHelper<TModel>, Expression<Func<TModel, TValue>>, string)' cannot be inferred from the usage. Try specifying the type arguments explicitly.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 18:21:31,585 62988ms MerchantController     OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 18:21:31, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:00:00,937  4185ms CompanyController      OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Company\Index.cshtml(56): error CS1061: 'IEnumerable<CompanyViewModel>' does not contain a definition for 'ImageFolder' and no extension method 'ImageFolder' accepting a first argument of type 'IEnumerable<CompanyViewModel>' could be found (are you missing a using directive or an assembly reference?)
+Fired time: 21.04.2017 19:00:00, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Company\Index.cshtml(56): error CS1061: 'IEnumerable<CompanyViewModel>' does not contain a definition for 'ImageFolder' and no extension method 'ImageFolder' accepting a first argument of type 'IEnumerable<CompanyViewModel>' could be found (are you missing a using directive or an assembly reference?)
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:01:04,954 68202ms MerchantController     OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 19:01:04, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:01:09,440 72688ms MerchantController     OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 19:01:09, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:06:07,515  3591ms MerchantController     OnException        - The method 'Skip' is only supported for sorted input in LINQ to Entities. The method 'OrderBy' must be called before the method 'Skip'.
+Fired time: 21.04.2017 19:06:07, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotSupportedException: The method 'Skip' is only supported for sorted input in LINQ to Entities. The method 'OrderBy' must be called before the method 'Skip'.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:07:43,998  2784ms PromotionController    OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 19:07:43, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:07:54,138 12925ms PromotionController    OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Promotion\Index.cshtml(110): error CS1061: 'Promotion' does not contain a definition for 'RealEstates' and no extension method 'RealEstates' accepting a first argument of type 'Promotion' could be found (are you missing a using directive or an assembly reference?)
+Fired time: 21.04.2017 19:07:54, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Promotion\Index.cshtml(110): error CS1061: 'Promotion' does not contain a definition for 'RealEstates' and no extension method 'RealEstates' accepting a first argument of type 'Promotion' could be found (are you missing a using directive or an assembly reference?)
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:08:05,770 24556ms PromotionController    OnException        - Метод или операция не реализована.
+Fired time: 21.04.2017 19:08:05, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.NotImplementedException: Метод или операция не реализована.
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+FATAL 2017-04-21 19:16:03,284  4605ms PromotionController    OnException        - D:\TFS\Discountapp\Discountapp.MVC\Views\Promotion\Index.cshtml(110): error CS1061: 'Promotion' does not contain a definition for 'RealEstates' and no extension method 'RealEstates' accepting a first argument of type 'Promotion' could be found (are you missing a using directive or an assembly reference?)
+Fired time: 21.04.2017 19:16:03, UserID:1,
+Headers:
+Browser version: '57.0'
+IsMobileDevice: 'False'
+Browser MinorVersion: '0'
+Browser MajorVersion: '57'
+Browser EcmaScriptVersion: '3.0'
+Browser Browser: 'Chrome'
+Browser is Beta: 'False'
+
+System.Web.HttpCompileException (0x80004005): D:\TFS\Discountapp\Discountapp.MVC\Views\Promotion\Index.cshtml(110): error CS1061: 'Promotion' does not contain a definition for 'RealEstates' and no extension method 'RealEstates' accepting a first argument of type 'Promotion' could be found (are you missing a using directive or an assembly reference?)
+   в Discountapp.MVC.Controllers.BaseController.OnException(ExceptionContext filterContext) в D:\TFS\Discountapp\Discountapp.MVC\Controllers\BaseController.cs:строка 244
+ERROR 2017-05-01 19:18:33,779 19767ms romotionItemController MoveNext           - An error occurred while updating the entries. See the inner exception for details.
+ERROR 2017-05-01 19:18:46,168 32156ms romotionItemController MoveNext           - An error occurred while updating the entries. See the inner exception for details.
+ERROR 2017-05-01 19:19:03,105 49094ms romotionItemController MoveNext           - An error occurred while updating the entries. See the inner exception for details.
+ERROR 2017-05-01 19:19:04,168 50157ms romotionItemController MoveNext           - An error occurred while updating the entries. See the inner exception for details.

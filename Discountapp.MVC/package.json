@@ -1,0 +1,39 @@
+{
+  "name": "discountapp",
+  "version": "1.0.0",
+  "license": "ISC",
+  "dependencies": {
+    "better-dateinput-polyfill": "^2.0.2",
+    "better-dom": "^3.0.0-rc.1",
+    "better-i18n-plugin": "^2.0.0",
+    "better-time-element": "^1.0.0",
+    "bootstrap": "^3.3.6",
+    "bootstrap-material-design": "^0.5.10",
+    "chosen-jquery": "^0.1.1",
+    "core-js": "^2.4.1",
+    "dropzone": "^4.3.0",
+    "font-awesome": "^4.7.0",
+    "imagesloaded": "^4.1.1",
+    "jquery": "^2.1.4",
+    "jquery-chosen": "^1.1.0",
+    "jquery-lazyload": "^1.9.7",
+    "jquery-validation-unobtrusive": "^3.2.6",
+    "masonry-layout": "^4.1.1",
+    "reflect-metadata": "^0.1.3",
+    "systemjs": "0.19.27",
+    "tree-multiselect": "^2.1.3",
+    "zone.js": "^0.6.23"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-replace": "^0.5.4",
+    "gulp-watch": "^4.3.11",
+    "lite-server": "^2.2.2",
+    "typescript": "^2.0.2",
+    "typings": "^1.3.2"
+  }
+}

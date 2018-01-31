@@ -1,0 +1,11 @@
+/node_modules/
+/bower_components/
+*/bower_components/
+*/node_modules/
+*/bin
+*/obj
+/Discountapp.MVC/Upload/temp
+#!/Discountapp.MVC/Upload/Default/nophoto.jpg
+/.vs
+/packages
+/logs

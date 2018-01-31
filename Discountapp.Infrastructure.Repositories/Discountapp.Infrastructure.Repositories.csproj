@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8262FD9-C5DD-42B4-BBAB-444662E67676}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Discountapp.Infrastructure.Repositories</RootNamespace>
+    <AssemblyName>Discountapp.Infrastructure.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugWithDbInitializer|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugWithDbInitializer\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.4.44.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.4.44\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntityFramework\AddressRepository.cs" />
+    <Compile Include="EntityFramework\CompanyRepository.cs" />
+    <Compile Include="EntityFramework\MerchantCategoryRepository.cs" />
+    <Compile Include="EntityFramework\MerchantEntityRepository.cs" />
+    <Compile Include="EntityFramework\MobileUserRepository.cs" />
+    <Compile Include="EntityFramework\RealEstateRepository.cs" />
+    <Compile Include="ICompanyRepository.cs" />
+    <Compile Include="IMerchantCategoryRepository.cs" />
+    <Compile Include="IMerchantEntityRepository.cs" />
+    <Compile Include="IMobileUserRepository.cs" />
+    <Compile Include="IPromotionItemRepository.cs" />
+    <Compile Include="EntityFramework\MerchantTypeRepository.cs" />
+    <Compile Include="EntityFramework\CategoryRepository.cs" />
+    <Compile Include="EntityFramework\CityRepository.cs" />
+    <Compile Include="EntityFramework\PromotionItemRepository.cs" />
+    <Compile Include="EntityFramework\PromotionRepository.cs" />
+    <Compile Include="ICategoryRepository.cs" />
+    <Compile Include="IPromotionRepository.cs" />
+    <Compile Include="IMerchantTypeRepository.cs" />
+    <Compile Include="IAddressRepository.cs" />
+    <Compile Include="ICityRepository.cs" />
+    <Compile Include="IRealEstateRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Memory\CategoryRepository.cs" />
+    <Compile Include="Memory\CityRepository.cs" />
+    <Compile Include="Memory\PromotionItemRepository.cs" />
+    <Compile Include="Memory\PromotionRepository.cs" />
+    <Compile Include="Memory\Repository.cs" />
+    <Compile Include="Memory\UnitOfWork.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityFramework\Repository.cs" />
+    <Compile Include="EntityFramework\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Discountapp.Domain\Discountapp.Domain.csproj">
+      <Project>{17C9731F-805E-4046-AC6A-ED916730CFF7}</Project>
+      <Name>Discountapp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure.CONSTANT\Discountapp.Infrastructure.Constants.csproj">
+      <Project>{f662e8c3-9ea4-4d7a-8e11-ffbc7ad2212c}</Project>
+      <Name>Discountapp.Infrastructure.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure.Resources\Discountapp.Infrastructure.Resources.csproj">
+      <Project>{ee764fc4-65b2-47aa-8a14-440a62103945}</Project>
+      <Name>Discountapp.Infrastructure.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Discountapp.Infrastructure\Discountapp.Infrastructure.csproj">
+      <Project>{b2b0be65-693a-4419-bb3c-33febb53672a}</Project>
+      <Name>Discountapp.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

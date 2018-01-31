@@ -1,0 +1,138 @@
+﻿@using Langx = Discountapp.MVC.App_LocalResources.Lang
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bundle.min.css" rel="stylesheet" />
+
+    @*<link rel="stylesheet" href="/node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css">*@
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">*@
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">*@
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+    @* https://treeviewmvcdemo.codeplex.com/ *@
+    @*https://github.com/alxlit/bootstrap-chosen*@
+
+    @RenderSection("styles", false)
+
+</head>
+<body>
+<header>
+    @Html.Partial("_Menu")
+</header>
+
+@*@Html.Partial("_LoginPartial")*@
+
+<main>
+    @RenderBody()
+</main>
+
+<script src="~/Scripts/bundle.min.js"></script>
+@RenderSection("scripts", false)
+
+<footer class="footer well">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <div class="logofooter"> @(Langx.BrandTitle)</div>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                <p><i class="fa fa-map-pin"></i> 210, Lorem Ipsum is simply dummy</p>
+                <p><i class="fa fa-phone"></i> Телефон (Алматы) : +7707522255</p>
+                <p><i class="fa fa-envelope"></i> E-mail : info@example.com</p>
+
+            </div>
+            <div class="col-md-5 col-sm-12 paddingtop-bottom">
+                <div class="heading7">Общее</div>
+                <ul class="footer-ul">
+                    <li><a href="#"> Career</a></li>
+                    <li><a href="#"> Privacy Policy</a></li>
+                    <li><a href="#"> Terms & Conditions</a></li>
+                    <li><a href="#"> Client Gateway</a></li>
+                    <li><a href="#"> Ranking</a></li>
+                    <li><a href="#"> Case Studies</a></li>
+                    <li><a href="#"> Frequently Ask Questions</a></li>
+                </ul>
+            </div>
+            @*<div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">LATEST POST</h6>
+                <div class="post">
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                </div>
+            </div>*@
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+                    </div>
+                </div>
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Twitter</a></blockquote>
+                    </div>
+                </div>
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    <div class="fb-xfbml-parse-ignore">
+                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">vkontakte</a></blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+<style>
+ 
+    footer.footer { min-height:350px; margin-top: 5%; font-family: 'Open Sans', sans-serif; }
+    .footerleft { _margin-top:50px; _padding:0 36px; }
+    .logofooter { margin-bottom:10px; font-size:25px; font-weight:700;}
+
+    .footerleft p { font-size:12px !important; font-family: 'Open Sans', sans-serif; margin-bottom:15px;}
+    .footerleft p i { width:20px; color:#999;}
+
+
+    .paddingtop-bottom {  _margin-top:50px;}
+    .footer-ul { list-style-type:none;  padding-left:0px; margin-left:2px;}
+    .footer-ul li { line-height:29px; font-size:12px;}
+    .footer-ul li a { color:#a0a3a4; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
+    .footer-ul i { margin-right:10px;}
+    .footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f; }
+
+    .social:hover {
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -o-transform: scale(1.1);
+    }
+ 
+    .icon-ul { list-style-type:none !important; margin:0px; padding:0px;}
+    .icon-ul li { line-height:75px; width:100%; float:left;}
+    .icon { float:left; margin-right:5px;}
+ 
+ 
+    .copyright { min-height:40px; background-color:#000000;}
+    .copyright p { text-align:left; padding:10px 0; margin-bottom:0px;}
+    .heading7 { font-size:21px; font-weight:700; _margin-bottom:22px;}
+    .post p { font-size:12px; line-height:20px;}
+    .post p span { display:block; color:#8f8f8f;}
+    .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
+    .bottom_ul li { float:left; line-height:40px;}
+    .bottom_ul li:after { content:"/"; margin-right:8px; margin-left:8px;}
+    .bottom_ul li a {  font-size:12px;}
+</style>

@@ -1,0 +1,535 @@
+﻿@using Discountapp.MVC.Controllers
+@using Discountapp.Infrastructure
+@using Discountapp.Domain.Models.Application
+@model Discountapp.MVC.ViewModels.MerchantEntityViewModel
+@using Langx = Discountapp.MVC.App_LocalResources.Lang;
+
+@{
+    ViewBag.Title = "AddShop";
+
+    var companyId = ViewBag.companyId as SelectList;
+    var merchantCategoryId = ViewBag.merchantCategoryId as SelectList;
+    var cityId = ViewBag.cityId as SelectList;
+
+}
+
+@section Styles{
+    <style>
+        .dz-success-mark,
+        .dz-error-mark {
+            display: none;
+        }
+
+        .dz-error-message {
+            color: red;
+        }
+
+        .dropzone {
+            width: 100%;
+            border: 2px dashed darkgrey;
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+        .dropzone:hover {
+            cursor: pointer;
+        }
+
+        .dropzone .dz-message {
+            text-align: center;
+            margin: 2em 0;
+        }
+    </style>
+
+}
+@section Scripts{
+    @*<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>*@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6zqVu-rH2iv0MHPFd-JrVE6xJwiv6CMk"></script>
+    <script>
+        $(document).ready(() => {
+            /*
+            //https://codepen.io/probil/pen/yyzdOM
+            //https://www.sitepoint.com/file-upload-form-express-dropzone-js/
+            Dropzone.options.uploadWidget = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 20, //mb
+                dictDefaultMessage: "@@(Langx.DragAndDropFilePlaceholderText)",
+                dictResponseError: 'Server not Configured',
+                acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+                //thumbnailHeight: 200,
+                thumbnailWidth: 200,
+                init: function () {
+                    var self = this;
+                    self.options.addRemoveLinks = true;
+                    self.options.dictRemoveFile = "Удалить";
+                    self.on("addedfile", function (file) {
+                        console.log('new file added ', file);
+                    });
+                    self.on("sending", function (file) {
+                        console.log('upload started', file);
+                        $('.meter').show();
+                    });
+                    self.on("totaluploadprogress", function (progress) {
+                        console.log("progress ", progress);
+                        $('.roller').width(progress + '%');
+                    });
+                    self.on("queuecomplete", function (progress) {
+                        $('.meter').delay(999).slideUp(999);
+                    });
+                    self.on("removedfile", function (file) {
+                        console.log(file);
+                    });
+                }
+            };*/
+
+            $.material.init();
+            $("img.img-lazy").lazyload();
+            $(".chosen-select").chosen({ disable_search_threshold: 10, width: "100%", placeholder_text: "@(Langx.ChooseAddresses)" });
+
+
+
+            //https://github.com/ericjgagnon/wickedpicker
+            //http://t00rk.github.io/bootstrap-material-datetimepicker/
+            //https://github.com/jonthornton/jquery-timepicker
+            //$('.timepicker_from').wickedpicker({ twentyFour: true, now: "09:00", title: "Укажите время", clearable: true });
+            $('.timepicker_to, .timepicker_from').timepicker({
+                'showDuration': true,
+                'timeFormat': 'H:i'
+            });
+
+            Dropzone.options.myAwesomeDropzone = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 20, //mb
+                dictDefaultMessage: "Нажмите или перетащите файлы"
+            };
+
+            $.material.init();
+            $("img.img-lazy").lazyload();
+            $(".chosen-select").chosen({ disable_search_threshold: 10 });
+            //$("#dropzoneField").dropzone({ url: "/file/post" });
+
+            //ar myDropzone = new Dropzone("form#dropzoneField", { url: "/file/post"});
+            var params = { sortable: true };
+            //$("#demo1").treeMultiselect(params);
+
+            //-----------------------------------------------------------------------
+            var $MapJsonCoordInput = $("#MapJsonCoord");
+
+            //AIzaSyB1hsatWgCIZPwkdRviUt2Exf48IsvdxIA
+            var map;
+            var marker;
+            var infowindow;
+            var messagewindow;
+            var marker;
+            var defaultCoords = { lat: 43.238624, lng: 76.896166 };
+
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: defaultCoords,
+                    zoom: 11,
+                    styles: [
+                        { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                        { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+                        {
+                            featureType: 'administrative.locality',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#18bc9c' }] //#18bc9c d59563
+                        },
+                        {
+                            featureType: 'poi',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#d59563' }]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#263c3f' }]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#6b9a76' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#38414e' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry.stroke',
+                            stylers: [{ color: '#212a37' }]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#9ca5b3' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#746855' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry.stroke',
+                            stylers: [{ color: '#1f2835' }]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#f3d19c' }]
+                        },
+                        {
+                            featureType: 'transit',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#2f3948' }]
+                        },
+                        {
+                            featureType: 'transit.station',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#d59563' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{ color: '#17263c' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.fill',
+                            stylers: [{ color: '#515c6d' }]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.stroke',
+                            stylers: [{ color: '#17263c' }]
+                        }
+                    ]
+                });
+
+                infowindow = new google.maps.InfoWindow({
+                    content: document.getElementById('form')
+                });
+
+                messagewindow = new google.maps.InfoWindow({
+                    content: document.getElementById('message')
+                });
+
+                google.maps.event.addListener(map, 'click', function (event) {
+                    //marker = new google.maps.Marker({
+                    //    position: event.latLng,
+                    //    map: map
+                    //});
+
+                    placeMarker(event.latLng);
+
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.open(map, marker);
+                    });
+
+                    var MapJsonCoord = [{
+                        ServiceName: "google",
+                        Longitude: event.latLng.lng(),
+                        Latitude: event.latLng.lat()
+                    }];
+
+                    $("#MapJsonCoord").val(JSON.stringify(MapJsonCoord));
+
+                    console.log(JSON.stringify(MapJsonCoord));
+                });
+
+
+
+                $(".selectYandexCityMap").change(() => {
+                    $(".selectYandexCityMap option:selected").each(function () {
+                        var id = $(this).attr("value");
+                        $.getJSON("/api/Cities", { id: id }, (city) => {
+                                var lon = city.MapJsonCoordCollection[0].Longitude;
+                                var lat = city.MapJsonCoordCollection[0].Latitude;
+                                setCoord(lon, lat);
+                            })
+                            .fail(setCoord(defaultCoords.lng, defaultCoords.lng));
+
+                        function setCoord(lon, lat) {
+                            map.panTo(new google.maps.LatLng(lat, lon));
+                        }
+                    });
+                });
+                
+            }
+
+            function saveData() {
+                var name = escape(document.getElementById('name').value);
+                var address = escape(document.getElementById('address').value);
+                var type = document.getElementById('type').value;
+                var latlng = marker.getPosition();
+                var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
+                    '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
+
+
+                console.log(url);
+            }
+
+            function placeMarker(location) {
+                if (marker) {
+                    marker.setPosition(location);
+                } else {
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: map
+                    });
+                }
+            }
+
+            initMap();
+
+
+            //----------------------------ymaps--------------------------------------------
+            //ymaps.ready(init);
+            //var myMap, myPlacemark;
+
+            //function init() {
+            //    // var $ymap = $("#map");
+            //    // if ($ymap.hasClass("map__loader"))
+            //    // {
+            //    //     $ymap.removeClass("map__loader");
+            //    // }
+
+            //    var defaultCoords = [51.15, 71.42];
+            //    if ($MapJsonCoordInput.val() !== "") {
+
+            //        var mapJsonCoord = JSON.parse($MapJsonCoordInput.val());
+            //        defaultCoords = [
+            //            mapJsonCoord[0].Longitude,
+            //            mapJsonCoord[0].Latitude
+            //        ];
+            //        //[{&quot;ServiceName&quot;:&quot;yandex&quot;,&quot;Longitude&quot;:51.166354636259385,&quot;Latitude&quot;:71.4271001476492}]
+            //        //myPlacemark.geometry.setCoordinates(_coords);
+            //    }
+
+
+            //    myMap = new ymaps.Map("map", {
+            //        center: defaultCoords,
+            //        zoom: 10
+            //    });
+
+            //    myPlacemark = new ymaps.Placemark(
+            //        defaultCoords, {
+            //            hintContent: 'Москва!',
+            //            balloonContent: 'Мой <strong>балун</strong>'
+            //        },
+            //        {
+            //            draggable: true, // метку можно перемещать
+            //            preset: 'islands#whiteStretchyIcon'
+            //        });
+
+            //    // Обработка события, возникающего при щелчке
+            //    // левой кнопкой мыши в любой точке карты.
+            //    // При возникновении такого события откроем балун.
+            //    myMap.events.add('click', function (e) {
+            //        if (!myMap.balloon.isOpen()) {
+
+            //            var coords = e.get('coords');
+            //            myPlacemark.geometry.setCoordinates(coords);
+            //            myMap.balloon.open(coords, {
+            //                contentHeader: 'Адрес магазина, акции',
+            //                contentBody: '<p>Эти координаты будут сохраннены в Вашем объявление</p>' +
+            //                    '<p>Если хотите поменять координаты щелкните еще раз</p>',
+            //                contentFooter: '<p>Ваши координаты: ' +
+            //                    [coords[0].toPrecision(6), coords[1].toPrecision(6)]
+            //                    .join(', ') + '</p>'
+            //            });
+
+            //            var MapJsonCoord = [{
+            //                ServiceName: "yandex",
+            //                Longitude: coords[0],
+            //                Latitude: coords[1]
+            //            }];
+
+            //            $("#MapJsonCoord").val(JSON.stringify(MapJsonCoord));
+
+            //            setTimeout(function () {
+            //                myMap.balloon.close();
+            //            }, 10000);
+            //        }
+            //        else {
+            //            myMap.balloon.close();
+            //        }
+            //    });
+
+            //    // Обработка события, возникающего при щелчке
+            //    // правой кнопки мыши в любой точке карты.
+            //    // При возникновении такого события покажем всплывающую подсказку
+            //    // в точке щелчка.
+            //    myMap.events.add('contextmenu', function (e) {
+            //        myMap.hint.open(e.get('coords'), 'Правая кнопкой');
+            //    });
+
+            //    // Скрываем хинт при открытии балуна.
+            //    myMap.events.add('balloonopen', function (e) {
+            //        myMap.hint.close();
+            //    });
+
+            //    myMap.geoObjects.add(myPlacemark);
+
+            //    $(".selectYandexCityMap").change(() => {
+            //        $(".selectYandexCityMap option:selected").each(function () {
+            //            var id = $(this).attr("value");
+            //            $.getJSON("/api/Cities", { id: id }, (city) => {
+            //                    var lon = city.MapJsonCoordCollection[0].Longitude;
+            //                    var lat = city.MapJsonCoordCollection[0].Latitude;
+            //                    setCoord(lon, lat);
+            //                })
+            //                .fail(setCoord(defaultCoords[0], defaultCoords[1]));
+
+            //            function setCoord(lon, lat) {
+            //                myMap.panTo([lon, lat], { flying: true });
+            //            }
+            //        });
+            //    });
+
+            //}
+        });
+    </script>
+    
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(MerchantController.Add), typeof(MerchantController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(MerchantController.Add), typeof(MerchantController))
+        </div>
+
+        <div class="col-lg-9 col-md-9 well">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h3"><a>@(Langx.AddRealEstateTitle)</a></h1>
+                </div>
+            </div>
+
+            @using (Html.BeginForm(nameof(MerchantController.Add), nameof(MerchantController).ControllerName(),
+                new { ViewBag.ReturnUrl }, FormMethod.Post,
+                new { role = "form", id = "main_form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @*@Html.HiddenFor(model => model.TempFolderName)*@
+                <fieldset>
+                    <div class="row">
+                        <div class="col-lg-7 col-md-7">
+                            <div class="form-group">
+                                <a>@Html.LabelFor(model => model.CompanyId, new {@class = "control-label"})</a>
+                                @Html.DropDownList(nameof(companyId), null, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(model => model.CompanyId, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="form-group">
+                                <a>@Html.LabelFor(model => model.MerchantCategoryId, new {@class = "control-label"})</a>
+                                @Html.DropDownList(nameof(merchantCategoryId), null, new {@class = "form-control"})
+                                @Html.ValidationMessageFor(model => model.MerchantCategoryId, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <a>@Html.LabelFor(model => model.CityId, new {@class = "control-label"})</a>
+                                    @Html.DropDownListFor(model => model.CityId, cityId, "", new {@class = "form-control selectYandexCityMap"})
+                                    @Html.ValidationMessageFor(model => model.CityId, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group label-floating is-empty">
+                                <a>@Html.LabelFor(model => model.Information, new {@class = "control-label"})</a>
+                                @Html.EditorFor(model => model.Information, new {htmlAttributes = new {@class = "form-control"}})
+                                @Html.ValidationMessageFor(model => model.Information, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="form-group">
+                                <p>Выбрать на карте</p>
+                                <input id="MapJsonCoord" name="MapJsonCoord" type="hidden" value="">
+                                <div id="map" style="min-height: 300px;" width="100%">
+
+                                </div>
+                                <div id="message">Location saved</div>
+                            </div>
+                            <div class="form-group label-floating is-empty">
+                                <a>@Html.LabelFor(model => model.Description, new {@class = "control-label"})</a>
+                                @Html.TextAreaFor(model => model.Description, new {@class = "form-control", rows = 3})
+                                @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.WorkTime)
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTime.Begin, new { htmlAttributes = new { @class = "form-control timepicker_from", placeholder = "9:00" } })
+                                        @Html.ValidationMessageFor(modelItem => Model.WorkTime, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTime.End, new { htmlAttributes = new { @class = "form-control timepicker_to", placeholder = "20:00" } })
+                                        @Html.ValidationMessageFor(modelItem => Model.WorkTime, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.WorkTimeSaturday)
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTimeSaturday.Begin, new { htmlAttributes = new { @class = "form-control timepicker_from", placeholder = "09:00" } })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTimeSaturday.End, new { htmlAttributes = new { @class = "form-control timepicker_to", placeholder = "20:00" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.WorkTimeSunday)
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTimeSaturday.Begin, new { htmlAttributes = new { @class = "form-control timepicker_from", placeholder = "9:00" } })
+                                    </div>
+                                    <div class="col-sm-6">
+                                        @Html.EditorFor(modelItem => Model.WorkTimeSunday.End, new { htmlAttributes = new { @class = "form-control timepicker_to", placeholder = "20:00" } })
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        @Html.CheckBoxFor(model => model.OfferComfirmed)
+                                        @Html.ValidationMessageFor(model => model.OfferComfirmed, "", new { @class = "text-danger" })
+                                        Я прочитал(a) <a href="#">правила</a>
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            <input class="btn btn-primary btn-raised"
+                                   type="submit"
+                                   value="@(Langx.AddRealEstate)"
+                                   onclick="javascript: if ($('#main_form').valid()) document.getElementById('main_form').submit();">
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</section>
+
+<style type="text/template" >
+    <div id="table">
+    <table>
+    <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
+    <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
+    <tr><td>Type:</td> <td><select id='type'> +
+               <option value='bar' SELECTED>bar</option>
+               <option value='restaurant'>restaurant</option>
+               </select> </td></tr>
+               <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
+    </table>
+    </div>
+</style>

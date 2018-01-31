@@ -1,0 +1,29 @@
+﻿@using Discountapp.Infrastructure
+@using Discountapp.MVC.Controllers
+@using Microsoft.AspNet.Identity
+@if(Request.IsAuthenticated)
+{
+    using(Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right hidden-lg hidden-md hidden-sm hidden-xs" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+    <li>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@(User.Identity.GetUserName()) <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="@Url.Action(nameof(CompanyController.Add), nameof(CompanyController).ControllerName())">Личный кабинет</a></li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Выход</a>
+            </li>
+        </ul>
+    </li>
+}
+else
+{
+    <li>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Войти <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Авторизация", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    </li>
+}

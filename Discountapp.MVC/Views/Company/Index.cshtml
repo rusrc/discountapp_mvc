@@ -1,0 +1,88 @@
+﻿@using Discountapp.Infrastructure
+@using Discountapp.MVC.Controllers
+@using PagedList
+@using PagedList.Mvc
+@using Langx = Discountapp.MVC.App_LocalResources.Lang
+@model IEnumerable<Discountapp.MVC.ViewModels.CompanyViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Index), typeof(CompanyController))
+        </div>
+        <div class="col-lg-3 col-md-3 hidden-lg hidden-md well">
+            @SidebBarViewHelper.Draw(nameof(CompanyController.Index), typeof(CompanyController))
+        </div>
+
+        <div class="col-lg-9 col-md-9 well">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h3">
+                        <span class="inline-block"><a>@Langx.ListCompany</a></span>
+                        <span class="inline-block">
+                            <a class="btn btn-default" href="@Url.Action(nameof(CompanyController.Add), nameof(CompanyController).ControllerName())">
+                                <i class="fa fa-plus"></i> <i class="fa fa-shopping-cart"></i> @Langx.AddCompany
+                            </a>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <hr class="hidden-sm hidden-xs" />
+
+
+            @if (((IPagedList)Model).TotalItemCount > ((IPagedList)Model).PageSize)
+            {
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+            }
+
+            <hr class="hidden-sm hidden-xs" />
+            <div style="overflow-x: scroll; ">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HotLineNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.WebSiteLink)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HotLineNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WebSiteLink)
+                            </td>
+                            <td>
+                                @*@Html.ActionLink("Edit", "Edit", new {id = item.Id}) |*@
+                                @Html.ActionLink("Удалить", "Delete", new {id = item.Id})
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+
+            @if (((IPagedList)Model).TotalItemCount > ((IPagedList)Model).PageSize)
+            {
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+            }
+
+        </div>
+    </div>
+</section>
